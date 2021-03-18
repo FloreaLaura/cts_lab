@@ -1,7 +1,7 @@
 package ro.ase.cts.seminar4;
 
 public class ShoppingCart {
-	private static ShoppingCart instance;
+	private static ShoppingCart instance=null;
 	
 	private ShoppingCart() {}
 
