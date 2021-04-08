@@ -11,8 +11,18 @@ import java.util.ArrayList;
 public class TechProductFactory extends AbstractProductFactory{
 
 	@Override
-	public Product makeProduct() throws UnsupportedOperationException {
-		return new TechProduct("generic");
+	public Product makeProduct(int id) throws UnsupportedOperationException {
+		ArrayList<String> records = readRecordsFromFile("tech_products.csv");
+		for (String record : records) {
+			String[] productArrtributes = record.split(",");
+			if (Integer.valueOf(productArrtributes[0]) == id) {
+				TechProduct.TechProductBuilder productBuilder = new TechProduct.TechProductBuilder(id);
+				return productBuilder.setName(productArrtributes[1]).setManufacturer(productArrtributes[2])
+						.setModel(productArrtributes[3]).setPrice(Float.valueOf(productArrtributes[5])).getProduct();
+			}
+		}
+		return new TechProduct.TechProductBuilder(id).getProduct();
+
 	}
 
 	@Override
@@ -31,9 +41,15 @@ public class TechProductFactory extends AbstractProductFactory{
 	
 	private ArrayList<String> readRecordsFromFile(String fileName){
 		ArrayList<String> records=new ArrayList<String>();
+		System.out.println("Reading product records...");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
 		
 		URL fileUrl=getClass().getResource(fileName);
-		File productsFile=new File(fileUrl.getPath());
+		File productsFile=new File("C:\\Users\\Laura\\Documents\\Facultate\\An 3 - Semestrul 2\\Calitate si Testare Software - CTS\\Seminar\\eclipse_workspace\\cts_lab\\seminar6\\src\\ro\\ase\\cts\\seminar6\\builder\\" + fileName);
 		try {
 			BufferedReader reader=new BufferedReader(new FileReader(productsFile));
 			String line;
@@ -50,6 +66,7 @@ public class TechProductFactory extends AbstractProductFactory{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("Finished reading product");
 		
 		return records;
 	}
