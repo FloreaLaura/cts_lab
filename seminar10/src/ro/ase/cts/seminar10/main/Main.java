@@ -1,5 +1,8 @@
 package ro.ase.cts.seminar10.main;
 
+import ro.ase.cts.seminar10.Chain.AbstractLogger;
+import ro.ase.cts.seminar10.Chain.LoggerChainFactory;
+import ro.ase.cts.seminar10.Chain.Verbosity;
 import ro.ase.cts.seminar10.strategy.MarketingStrategyInterface;
 import ro.ase.cts.seminar10.strategy.ModulMarketing;
 import ro.ase.cts.seminar10.strategy.RandomMarketingStrategy;
@@ -25,6 +28,16 @@ public class Main {
 		System.out.println("Numar puncte bonus: "+pucteBonus);
 		
 		modulMarketing.setCurrentStrategy((base)->{return 20*base;});
+		
+		pucteBonus=modulMarketing.getBonus(100);
+		System.out.println("Numar puncte bonus: "+pucteBonus);
+		
+		
+		System.out.println("----------------------------------------");
+		AbstractLogger loggerChain=LoggerChainFactory.getChainOfLoggers();
+		loggerChain.logMessage(Verbosity.INFO, "This log is FYI");
+		loggerChain.logMessage(Verbosity.ERROR, "Something went wrong");
+		loggerChain.logMessage(Verbosity.DEBUG, "This is debug message");
 	}
 
 }
