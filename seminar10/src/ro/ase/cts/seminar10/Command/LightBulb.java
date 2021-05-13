@@ -18,13 +18,17 @@ public class LightBulb {
 		System.out.println("Dimming light");
 		if (lightIntensity > 0) {
 			lightIntensity--;
+			System.out.println("Light is at " + lightIntensity + " intensity level ");
 		}
+		
 
 	}
 
 	public void increaseLightIntensity() {
 		System.out.println("Increase intensity");
 		lightIntensity++;
+		System.out.println("Light is at " + lightIntensity + " intensity level ");
 	}
+	
 
 }
