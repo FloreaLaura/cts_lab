@@ -9,6 +9,8 @@ import ro.ase.cts.seminar12.Observer.CreditAccount;
 import ro.ase.cts.seminar12.Observer.InsufficientFundsException;
 import ro.ase.cts.seminar12.Observer.NotificationInterface;
 import ro.ase.cts.seminar12.Observer.SMSNotification;
+import ro.ase.cts.seminar12.Template.DecimalFormatter;
+import ro.ase.cts.seminar12.Template.HexFormatter;
 
 public class Main {
 
@@ -44,6 +46,13 @@ public class Main {
 		myCharacter.setMemento(saveList.get(0));
 		System.out.println("Character hitpoints: "+myCharacter.getHitpoints());
 
+		
+		//---------Template------------------
+		System.out.println("--------------------------------------------");
+		DecimalFormatter decimalFormatter=new DecimalFormatter();
+		decimalFormatter.displayOutput(10);
+		HexFormatter hexFormatter=new HexFormatter();
+		hexFormatter.displayOutput(10);
 	}
 
 }
