@@ -1,4 +1,4 @@
-package ro.ase.cts.seminar14.testing;
+package ro.ase.cts.seminar14.unitTesting;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,12 +6,13 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import ro.ase.cts.seminar14.Student;
 import ro.ase.cts.seminar14.StudentExceptionWrongValue;
 
-class StudentTestCase {
+class TestCaseStudent {
 
 	Student student;
 	static String DEFAUlT_NAME = "Anonim";
@@ -69,6 +70,7 @@ class StudentTestCase {
 	}
 
 	// cardinality test - un element
+	@Tag("importante")
 	@Test
 	void testCalculMedieCardinalityOne() {
 		int note[]=new int[1];
